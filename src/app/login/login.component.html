@@ -1,0 +1,41 @@
+<h2>Login Form</h2>
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+  <div>
+    <label for="username">Username</label>
+    <input 
+      type="text" 
+      id="username" 
+      name="username" 
+      [(ngModel)]="username" 
+      required 
+      placeholder="Enter Username" 
+      #usernameInput="ngModel"
+    />
+    
+    <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error">
+      Username is required.
+    </div>
+  </div>
+
+
+  <div>
+    <label for="password">Password</label>
+    <input 
+      type="password" 
+      id="password" 
+      name="password" 
+      [(ngModel)]="password" 
+      required 
+      placeholder="Enter Password" 
+      #passwordInput="ngModel"
+    />
+    
+    <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+      Password is required.
+    </div>
+  </div>
+
+  
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
